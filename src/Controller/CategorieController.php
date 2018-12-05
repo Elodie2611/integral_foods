@@ -16,8 +16,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\File;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-
 class CategorieController extends AbstractController
 {
     /**
@@ -41,7 +39,7 @@ class CategorieController extends AbstractController
     	$categorie = new Categorie();
 
     	$form = $this->createFormBuilder($categorie)
-    		->add('libelle', TextType::class, array('attr' => 
+    		->add('libelle', TextType::class, array('attr' =>
     			array('class' => 'form-control mt-5 mb-5')))
 
     		->add('photo', FileType::class, array('attr' =>
@@ -52,7 +50,7 @@ class CategorieController extends AbstractController
 				'attr' => array('class' => 'btn btn-success mt-5 mb-5')))
     		->getForm();
 
-    		$form->handleRequest($request); 
+    		$form->handleRequest($request);
 
     		if($form->isSubmitted() && $form->isValid())
 			{
@@ -62,7 +60,7 @@ class CategorieController extends AbstractController
 
 				$fileName = substr(base_convert(md5(microtime()), 16, 36), 0, 8).'.'.$file->guessExtension();
                 try
-                {
+                { // c'est celui que j'ai eu
                     $file->move
                     (
                         $this->getParameter('images_dir'),
@@ -87,66 +85,68 @@ class CategorieController extends AbstractController
 			'form' => $form->createView()));
     }
 
+
     /**
-    * @Route("/categorie/modifier_categorie/{id}")
-    * Method({"GET", "POST"})
-    */
-    public function modifierCategorie(Request $request, $id)
-    {
-    	$categorie = new Categorie();
-    	$categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($id);
-
-    	$actualFileName =  $categorie->getPhoto();
-    	$categorie->setPhoto(new File(($this->getParameter('images_dir').$actualFileName)));
-
-    	$form = $this->createFormBuilder($categorie)
-    		->add('libelle', TextType::class, array('attr' => 
-    			array('class' => 'form-control')))
-    		->add('photo', FileType::class, array('attr' =>array('class' => 'form-control border-0'), 'required'=>false))
-    		->add('sauvegarde', SubmitType::class, array(
-				'label' => 'Modifier une catégorie',
-				'attr' => array('class' => 'btn btn-success mt-5 mb-5')))
-    		->getForm();
-
-		$form->handleRequest($request);
-		
-		if($form->isSubmitted() && $form->isValid())
+        * @Route("/categorie/modifier_categorie/{id}")
+        * Method({"GET", "POST"})
+        */
+        public function modifierCategorie(Request $request, $id)
         {
-            $entityManager = $this->getDoctrine()->getManager();
-            $cateMod = $form->getData();
+        	$categorie = new Categorie();
+        	$categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($id);
 
-            if(is_null($cateMod->getPhoto())){
-                $cateMod->setPhoto($actualFileName);
-            }
-            else{
+        	$actualFileName =  $categorie->getPhoto();
+        	$categorie->setPhoto(new File(($this->getParameter('images_dir').$actualFileName)));
 
-                $file = $cateMod->getPhoto();
+        	$form = $this->createFormBuilder($categorie)
+        		->add('libelle', TextType::class, array('attr' =>
+        			array('class' => 'form-control')))
+        		->add('photo', FileType::class, array('attr' =>array('class' => 'form-control border-0'), 'required'=>false))
+        		->add('sauvegarde', SubmitType::class, array(
+    				'label' => 'Modifier une catégorie',
+    				'attr' => array('class' => 'btn btn-success mt-5 mb-5')))
+        		->getForm();
 
-                $fileName = substr(base_convert(md5(microtime()), 16, 36), 0, 8).'.'.$file->guessExtension();
-                 // Move the file to the directory where brochures are stored
-                try
-                {
-                    $file->move(
-                        $this->getParameter('images_dir'),
-                        $fileName
-                    );
+    		$form->handleRequest($request);
+
+    		if($form->isSubmitted() && $form->isValid())
+            {
+                $entityManager = $this->getDoctrine()->getManager();
+                $cateMod = $form->getData();
+
+                if(is_null($cateMod->getPhoto())){
+                    $cateMod->setPhoto($actualFileName);
                 }
-                catch (FileException $e)
-                {
-                    // ... handle exception if something happens during file upload
+                else{
+
+                    $file = $cateMod->getPhoto();
+
+                    $fileName = substr(base_convert(md5(microtime()), 16, 36), 0, 8).'.'.$file->guessExtension();
+                     // Move the file to the directory where brochures are stored
+                    try
+                    {
+                        $file->move(
+                            $this->getParameter('images_dir'),
+                            $fileName
+                        );
+                    }
+                    catch (FileException $e)
+                    {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    $cateMod->setPhoto($fileName);
                 }
+                $entityManager->persist($cateMod);
+                $entityManager->flush();
 
-                $cateMod->setPhoto($fileName);
+                return $this->redirect('/categorie');
             }
-            $entityManager->persist($cateMod);
-            $entityManager->flush();
 
-            return $this->redirect('/categorie');
+    		return $this->render('categorie/modifier_categorie.html.twig',array(
+    			'form' => $form->createView()));
         }
 
-		return $this->render('categorie/modifier_categorie.html.twig',array(
-			'form' => $form->createView()));
-    }
 
     /**
      * @Route("/categorie/supprimer_categorie/{id}")

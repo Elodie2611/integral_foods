@@ -18,6 +18,7 @@ class Utilisateur
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Prix")
      * @ORM\Column(type="integer")
      */
     private $user_Id;
@@ -57,6 +58,8 @@ class Utilisateur
      * @ORM\Column(type="string", length=10)
      */
     private $tel;
+
+
 
     /**
      * @ORM\Column(type="string", length=14)
@@ -245,4 +248,8 @@ class Utilisateur
 
         return $this;
     }
+
+    public function __toString() {
+    return $this->user_Id;
+}
 }

@@ -22,8 +22,8 @@ class Categorie
     private $libelle;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $photo;
 
     public function getId(): ?int
@@ -42,16 +42,15 @@ class Categorie
 
         return $this;
     }
-
     public function getPhoto()
-    {
-        return $this->photo;
-    }
+{
+    return $this->photo;
+}
 
-    public function setPhoto($photo): self
-    {
-        $this->photo = $photo;
+public function setPhoto($photo): self
+{
+    $this->photo = $photo;
 
-        return $this;
-    }
+    return $this;
+}
 }

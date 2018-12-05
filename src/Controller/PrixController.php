@@ -37,7 +37,8 @@ class PrixController extends AbstractController
         $form = $this->createFormBuilder($prix)
 
 
-       ->add('id_utilisateur', EntityType::class, array('class' => Utilisateur::class, 'choice_label' => 'entreprise', 'data' => 'user_Id'))
+       ->add('id_utilisateur', EntityType::class, array('class' => Utilisateur::class, 'choice_label' => 'entreprise', 'data' => 'entreprise'))
+
         
 
 
@@ -51,9 +52,7 @@ class PrixController extends AbstractController
 		if($form->isSubmitted()&&$form->isValid()){
 
 			$newPrix = $form->getData();
-            $idUser = $form->get('id_utilisateur')->getData()->getUserId();
-            $idProd = $form->get('id_produit')->getData()->getId();
-            $prix = $form->get('prix')->getData();
+            
             $entityManager = $this->getDoctrine()->getManager();
           
             $entityManager->persist($newPrix);
@@ -61,7 +60,7 @@ class PrixController extends AbstractController
 		
 			
 			$entityManager->flush();
-            var_dump($idUser);
+          
 			return $this->redirect('/prix');
 		}
 
@@ -109,7 +108,7 @@ class PrixController extends AbstractController
      * @Route("prix/update/{id}")
      * Method({"GET", "POST"})
      */
-	public function update(Request $request, $id){
+public function update(Request $request, $id){
 	$prix = new Prix();
 	$prix = $this->getDoctrine()->getRepository(Prix::class)->find($id);
 

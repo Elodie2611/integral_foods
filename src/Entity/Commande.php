@@ -19,12 +19,12 @@ class Commande
     /**
      * @ORM\Column(type="integer")
      */
-    private $idUtilisateur;
+    private $id_utilisateur;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $idProduit;
+    private $id_produit;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,6 +41,11 @@ class Commande
      */
     private $date_commande;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $compte;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,24 +53,24 @@ class Commande
 
     public function getIdUtilisateur(): ?int
     {
-        return $this->idUtilisateur;
+        return $this->id_utilisateur;
     }
 
-    public function setIdUtilisateur(int $idUtilisateur): self
+    public function setIdUtilisateur(int $id_utilisateur): self
     {
-        $this->idUtilisateur = $idUtilisateur;
+        $this->id_utilisateur = $id_utilisateur;
 
         return $this;
     }
 
     public function getIdProduit(): ?int
     {
-        return $this->idProduit;
+        return $this->id_produit;
     }
 
-    public function setIdProduit(int $idProduit): self
+    public function setIdProduit(int $id_produit): self
     {
-        $this->idProduit = $idProduit;
+        $this->id_produit = $id_produit;
 
         return $this;
     }
@@ -102,6 +107,18 @@ class Commande
     public function setDateCommande(\DateTimeInterface $date_commande): self
     {
         $this->date_commande = $date_commande;
+
+        return $this;
+    }
+
+    public function getCompte(): ?bool
+    {
+        return $this->compte;
+    }
+
+    public function setCompte(?bool $compte): self
+    {
+        $this->compte = $compte;
 
         return $this;
     }

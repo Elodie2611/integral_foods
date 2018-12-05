@@ -52,6 +52,7 @@ class Produit
         return $this->id;
     }
 
+
     public function getIdCategorie(): ?int
     {
         return $this->idCategorie;
@@ -116,7 +117,6 @@ class Produit
     public function getPhoto()
     {
         return $this->photo;
-    
     }
 
     public function setPhoto($photo): self

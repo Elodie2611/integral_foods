@@ -135,7 +135,7 @@ public function forgetPassword(Request $request, UserPasswordEncoderInterface $p
 	$user = new User();
 	$form = $this->createFormBuilder($user)
 	->add('email', TextType::class, array('attr' => array('class' => 'form-control')))
-	->add('sauvegarde', SubmitType::class, array('label' => 'Réinitialiser mot de passe', 'attr' => array('class' => 'btn btn-success mb-5 mt-5')))
+	->add('sauvegarde', SubmitType::class, array('label' => 'réinitialiser mot de passe', 'attr' => array('class' => 'btn btn-success mb-5 mt-5')))
 	->getform();
 		
 	$form->handleRequest($request);
@@ -221,30 +221,56 @@ public function nouveau(Request $request){
 		'industrie agroalimentaire' => "industrie agroalimentaire",
 		'autre' => "autre")))
 
-		->add('etablissement_autre', TextType::class, array('attr' => array('class' => 'form-control')))
-
-		
-		->add('tel', TextType::class, array('attr' => array('class' => 'form-control')))
-		
+		->add('etablissement_autre', TextType::class, array('attr' => array('class' => 'form-control'), 'required'=>false))	
+		->add('tel', TextType::class, array('attr' => array('class' => 'form-control')))	
 		->add('siret', TextType::class, array('attr' => array('class' => 'form-control')))
 		->add('num_tva', TextType::class, array('attr' => array('class' => 'form-control')))
-	
 		->add('description', TextType::class, array('attr' => array('class' => 'form-control')))
 		->add('date_inscription', HiddenType::class, array('attr' => array('class' => 'form-control')))
 		->add('sauvegarde', SubmitType::class, array('label' => 'Créer utilisateur', 'attr' => array('class' => 'btn btn-success mb-5 mt-5')))
 		->getform();
 
 		$form->handleRequest($request);
+
 		if($form->isSubmitted()&&$form->isValid()){
 			$newUtilisateur = $form->getData();
-			$entityManager = $this->getDoctrine()->getManager();
-			$entityManager->persist($newUtilisateur);
-            $date = new \DateTime("now");  
-			$utilisateur->setDateInscription($date);
-			$utilisateur->setStatusInscription(0); 
-			$entityManager->flush();
+			$tel = $request->request->get('tel');
+			$siret = is_numeric($request->request->get('siret'));
+			$tva = is_numeric($request->request->get('num_tva'));
+			if($tel == true)
+			{
+				$entityManager = $this->getDoctrine()->getManager();
+				$entityManager->persist($newUtilisateur);
+	            $date = new \DateTime("now");  
+				$utilisateur->setDateInscription($date);
+				$utilisateur->setStatusInscription(0); 
+				$entityManager->flush();
 
-			return $this->redirect('/');
+				return $this->redirect('/');
+			}else
+			{
+				var_dump($tel);
+				var_dump($siret);
+				var_dump($tva);
+				if($tel==false){
+					$this->addFlash(
+	            	'tel',
+	            	'Format de numéro de téléphonne non valide');
+				}
+				if($siret==false){
+					$this->addFlash(
+	            	'siret',
+	            	'Format de numéro de siret non valide');
+				}
+				if($tva==false){
+					$this->addFlash(
+	            	'tva',
+	            	'Format de numéro de tva non valide');
+				}
+			
+			}
+			
+			
 		}
 
 		return $this->render('utilisateur/nextStep.html.twig', array(

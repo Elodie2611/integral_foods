@@ -45,7 +45,7 @@ class Prix
 
     public function setIdUtilisateur(Utilisateur $idUtilisateur): self
    {
-       $id = $idUtilisateur->getId();
+       $id = $idUtilisateur->getUserId();
        $this->id_utilisateur = $id;
 
        return $this;
