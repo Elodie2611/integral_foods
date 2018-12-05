@@ -1,13 +1,13 @@
 {
   "entrypoints": {
+    "sauces": {
+      "js": [
+        "/build/sauces.js"
+      ]
+    },
     "ban": {
       "js": [
         "/build/ban.js"
-      ]
-    },
-    "ban_small": {
-      "js": [
-        "/build/ban_small.js"
       ]
     },
     "ban2": {
@@ -40,9 +40,9 @@
         "/build/oil2.js"
       ]
     },
-    "sauces": {
+    "ban_small": {
       "js": [
-        "/build/sauces.js"
+        "/build/ban_small.js"
       ]
     },
     "sauces2": {
@@ -83,16 +83,6 @@
     "users": {
       "js": [
         "/build/users.js"
-      ]
-    },
-    "prices": {
-      "js": [
-        "/build/prices.js"
-      ]
-    },
-    "orders": {
-      "js": [
-        "/build/orders.js"
       ]
     }
   }
