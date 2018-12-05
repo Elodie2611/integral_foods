@@ -1,0 +1,99 @@
+{
+  "entrypoints": {
+    "ban": {
+      "js": [
+        "/build/ban.js"
+      ]
+    },
+    "ban_small": {
+      "js": [
+        "/build/ban_small.js"
+      ]
+    },
+    "ban2": {
+      "js": [
+        "/build/ban2.js"
+      ]
+    },
+    "brigade": {
+      "js": [
+        "/build/brigade.js"
+      ]
+    },
+    "brigadesmall": {
+      "js": [
+        "/build/brigadesmall.js"
+      ]
+    },
+    "logo_small": {
+      "js": [
+        "/build/logo_small.js"
+      ]
+    },
+    "oil": {
+      "js": [
+        "/build/oil.js"
+      ]
+    },
+    "oil2": {
+      "js": [
+        "/build/oil2.js"
+      ]
+    },
+    "sauces": {
+      "js": [
+        "/build/sauces.js"
+      ]
+    },
+    "sauces2": {
+      "js": [
+        "/build/sauces2.js"
+      ]
+    },
+    "spice": {
+      "js": [
+        "/build/spice.js"
+      ]
+    },
+    "spice2": {
+      "js": [
+        "/build/spice2.js"
+      ]
+    },
+    "spices": {
+      "js": [
+        "/build/spices.js"
+      ]
+    },
+    "logo_co": {
+      "js": [
+        "/build/logo_co.js"
+      ]
+    },
+    "categories": {
+      "js": [
+        "/build/categories.js"
+      ]
+    },
+    "products": {
+      "js": [
+        "/build/products.js"
+      ]
+    },
+    "users": {
+      "js": [
+        "/build/users.js"
+      ]
+    },
+    "prices": {
+      "js": [
+        "/build/prices.js"
+      ]
+    },
+    "orders": {
+      "js": [
+        "/build/orders.js"
+      ]
+    }
+  }
+}
