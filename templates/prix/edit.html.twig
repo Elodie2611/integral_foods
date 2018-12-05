@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier le prix{% endblock %}
+{% block body %}
+
+
+
+	<div class="container m-auto w-50">
+
+		<h1 class=" mt-5 mb-5 text-center">Modifier le prix</h1>
+
+		{{form_start(form)}}
+
+		{{ form_row(form.id_utilisateur, {'label': 'Client'}) }}
+		{{ form_row(form.id_produit, {'label': 'Produit'}) }}
+		{{ form_row(form.prix) }}
+
+		{{form_end(form)}}
+
+	</div>
+
+	<div class="container mb-5 text-center">
+		<a href="/prix" ><input class="btn btn-light" type="submit" name="retour" value="Revenir à la liste des prix"></a>
+	</div>
+
+
+
+
+{% endblock %}

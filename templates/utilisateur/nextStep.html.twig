@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}Inscription 2/2{% endblock %}
+{% block body %}
+
+<div class="container m-auto w-50">
+
+	<div class="text-center mt-5 mb-5">
+
+		<h1>Inscription, étape 2/2 </h1>
+		<h3>Veuillez entrer les informations relatives à votre activité</h3>
+		<h4> Un mail de confirmation vous sera envoyé une fois que nous aurons validé votre inscription</h4>
+
+	</div>
+
+	<div class="container mt-5 mb-5" style="font-family: Raleway, Arial;">
+
+		{{form_start(form)}}
+		{# {{form_widget(form)}} #}
+
+		{{ form_row(form.nom) }}
+		{{ form_row(form.prenom, {'label': 'Prénom'}) }}
+		{{ form_row(form.civilite, {'label': 'Civilité'}) }}
+		{{ form_row(form.entreprise) }}
+		{{ form_row(form.type_etablissement, {'label': 'Type établissement'}) }}
+		{{ form_row(form.etablissement_autre, {'label': 'Établissement autre'}) }}
+		{{ form_row(form.tel, {'label': 'Téléphone'}) }}
+		{{ form_row(form.siret, {'label': 'Siret'}) }}
+		{{ form_row(form.num_tva, {'label': 'Numéro de TVA'}) }}
+		{{ form_row(form.description, {'label': 'Description'}) }}
+
+
+		{{form_end(form)}}
+
+	</div>
+
+</div>
+
+{% endblock %}

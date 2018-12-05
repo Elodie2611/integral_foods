@@ -1,0 +1,44 @@
+{# page d'accueil des utilisateurs, menu permettant de choisir le catalogue épices, sauces ou twists #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos catégories{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+    {% if is_granted('ROLE_troll') %}
+
+		<h1 class="text-center mb-5 mt-5">Gestion administrateur</h1>
+
+		<div class="text-center mb-5 mt-5">
+			<a href="/utilisateur"><img src="{{ asset('build/images/users.png') }}" alt="utilisateurs"></a>
+			<a href="/produit"><img src="{{ asset('build/images/products.png') }}" alt="produits"></a>
+			<a href="/categorie"><img src="{{ asset('build/images/categories.png') }}" alt="categories"></a>
+			<a href="/prix"><img src="{{ asset('build/images/prices.png') }}" alt="prices"></a>
+			<a href="/commandes"><img src="{{ asset('build/images/orders.png') }}" alt="orders"></a>
+		</div>
+	{% else %}
+
+    <div class="row pt-5 pb-5 justify-content-center" id="titre">  
+        <h2>Nos Catégories</h2>
+    </div>
+
+
+{# modification de l'affichage de l'image en dynamique (récupération de l'image enregistrée sur la bdd et dans un dossier uploads) #}
+{# modification du alt dans la balise img afin que le nom de la cétagorie s'affiche en cas d'image non chargée #}
+    <div class="row">
+		{% for categorie in categories %}
+			<div class="col-xl-3 col-lg-3 col-md-3 m-auto">
+				<figure class="figure2">
+				  	<a href="/produit/client/{{ categorie.id}}"><img src="{{ asset('uploads/') ~ categorie.photo }}" class="figure-img img-fluid rounded" alt="image : {{categorie.libelle}}."></a>
+				  	<a href="/produit/client/{{ categorie.id}}"><figcaption class="figure-caption">{{categorie.libelle}}</figcaption></a>
+				</figure>
+			</div>
+		{% endfor %}
+	</div>	
+	   {% endif %}
+</div>
+ 
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prix{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+
+		<h1 class=" mt-5 mb-5 text-center">Gestion des prix</h1>
+
+		{{form_start(form)}}
+
+		{# {{ form_widget(form) }} #}
+
+		{{ form_row(form.id_utilisateur,  {'label': 'Client'}) }}
+		{{ form_row(form.id_produit,  {'label': 'Produit'}) }}
+		{{ form_row(form.prix) }}
+		
+
+		{{form_end(form)}}
+
+	</div>
+
+	<div class="container text-center mb-5"><a href="/../prix" class="btn btn-light">Afficher les prix</a></div>
+
+
+	
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}    
+
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <h1> Vous êtes déjà connecté</h1>
+        <a href="/">cliquez ici pour revenir à l'accueil</a>
+
+    {% else %}
+
+    <div class="container m-auto">
+        <form method="post" class="m-auto text-center w-50">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <h1 class="mb-5 mt-5">Espace connexion</h1>
+
+            <img src="{{ asset('build/images/logo_co.png') }}" alt="logo_connexion" id="logo_co" class="mb-5">
+
+            <label for="inputEmail" class="sr-only">E-mail</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+            <label for="inputPassword" class="sr-only">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn btn-primary btn-success mt-3 mb-2" type="submit">
+               Connexion
+            </button>
+        </form>
+
+    </div>
+
+    <div class="container text-center w-50 mt-5 mb-5">
+        <a href="utilisateur/newUser" class="btn btn-primary btn-success">Inscrivez-vous ici</a>
+        <a href="utilisateur/forgetPassword" class="btn btn-primary btn-success">Mot de passe oublié ? </a>
+
+    </div>
+
+{% endif %}
+
+
+{% endblock %}

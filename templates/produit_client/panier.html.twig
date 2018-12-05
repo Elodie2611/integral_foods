@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+
+{{form_start(form)}}
+
+	{{form_widget(form)}}
+
+	{% for leProduit in panier %}
+		{{ leProduit.nom }}
+		{{ leProduit.prix }}
+		{{ form_row(form.nom), {'label': 'Nom'} }}
+		{{ form_row(form.id) }}
+		{{ form_row(form.prix), {'label': 'Prix'} }}
+		{{ form_row(form.quantite), {'label': 'Quantité'} }}
+
+	{% endfor %}
+
+{{form_end(form)}}
+{% endblock %}

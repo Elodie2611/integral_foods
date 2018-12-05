@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Administration {% endblock %}
+
+{% block body %}
+
+	<div class="container m-auto">
+
+		<h1 class="text-center mb-5 mt-5">Gestion administrateur</h1>
+
+		<div class="text-center mb-5 mt-5">
+			<a href="/utilisateur"><img src="{{ asset('build/images/users.png') }}" alt="utilisateurs"></a>
+			<a href="/produit"><img src="{{ asset('build/images/products.png') }}" alt="produits"></a>
+			<a href="/categorie"><img src="{{ asset('build/images/categories.png') }}" alt="categories"></a>
+		</div>
+
+	</div>
+	
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Nouveal utilisateur{% endblock %}
+{% block body %}
+
+{{form_start(form)}}
+{# {{form_widget(form)}} #}
+
+<div class="container m-auto">
+
+	<h1 class="mt-4 mb-4 text-center">Ajouter un utilisateur</h1>
+
+	{{ form_row(form.user_id) }}
+	{{ form_row(form.nom,  {'label': 'nom*'}) }}
+	{{ form_row(form.prenom, {'label': 'Prénom*'}) }}
+	{{ form_row(form.civilite, {'label': 'Civilité*'}) }}
+	{{ form_row(form.entreprise, {'label': 'entreprise*'}) }}
+	{{ form_row(form.type_etablissement, {'label': 'Type établissement*'} ) }}
+	{{ form_row(form.etablissement_autre, {'label': 'Établissement autre'}) }}
+	{{ form_row(form.status_inscription, {'label': 'Statut inscription'}) }}
+	{{ form_row(form.tel, {'label': 'Téléphone*'}) }}
+	{{ form_row(form.email, {'label': 'E-mail*'}) }}
+	{{ form_row(form.siret, {'label': 'Siret*'}) }}
+	{{ form_row(form.kbis, {'label': 'Kbis*'}) }}
+	{{ form_row(form.description, {'label': 'Description'}) }}
+	{{ form_row(form.date_inscription) }}
+</div>
+
+{{form_end(form)}}
+
+{% endblock %}

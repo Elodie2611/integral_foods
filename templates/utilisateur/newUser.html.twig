@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block title %}Nouvel utilisateur{% endblock %}
+{% block body %}
+
+
+		<style>
+		
+		label {
+			margin-left: 50px;
+		}
+
+		#form_email, #form_password {
+			width: 30% !important;
+		}
+
+		</style>
+
+
+	 <div class="container m-auto ">
+
+	 	<div class="text-center mt-5 mb-5">
+			<h1>Inscription, étape 1/2</h1>
+			<h1>Saisissez votre e-mail ainsi que votre mot de passe</h1>
+		</div>
+		{{form_start(form)}}
+		{{form_widget(form)}}
+
+		{{form_end(form)}}
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ produit.nom }}{% endblock %}
+
+{% block body %}
+
+	<div class="container m-auto">
+		<h1 class="text-center mb-5 mt-5">Informations sur le produit</h1>
+		<div class="text-center m-auto infos_produit">			
+			<h1>{{ produit.nom }}</h1>
+			<p>{{ categories.libelle }}</p>
+			<p>{{ produit.description }}</p>
+			<p>{{ produit.reference }}</p>
+			<p>{{ produit.EAN }}</p>
+
+{# modification de l'affichage des images et du alt dans la balise img #}
+			<p><img src="{{ asset('uploads/') ~ produit.photo }}" class="figure-img img-fluid rounded" alt="image : {{ produit.nom }}."></p>
+			
+			{% for price in prix %}
+			{# email = user_Id #}
+				{% if price.idUtilisateur == email and price.prix > 0 %}
+					<p> {{ price.prix }}</p>
+					<a href="/produit/client/fiche_produit/panier/{{ produit.id }},{{ price.prix }},{{produit.nom}}" >
+					<input class="btn btn-success" type="submit" name="panier" value="Ajouter au panier"></a>
+				{% elseif price.prix == 0 %}
+					<a href="/produit/client/{{ produit.id }}" ><a href="mailto:labrigade@integralfoods.fr" ><input class="btn btn-success" type="submit" name="devis" value="Demander un devis à La Brigade !"></a>
+				{% endif %}
+			{% endfor %}			
+		</div>
+	</div>
+
+	<div class="text-center mb-5 mt-5">
+		<a href="/produit/client/{{ produit.idCategorie }}" ><input class="btn btn-success" type="submit" name="retour" value="Revenir à la liste des produits"></a>
+	</div>
+{% endblock %}

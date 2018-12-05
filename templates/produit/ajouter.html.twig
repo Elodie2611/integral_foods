@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un nouveau produit{% endblock %}
+{% block body %}
+	<div class="container mt-5 mb-5">
+
+		<h1 class="mt-4 mb-4 text-center">Ajouter un produit</h1>
+
+		{{ form_start(form) }}
+		
+		{{ form_row(form.idCategorie, {'label': 'Catégorie'}) }}
+		{{ form_row(form.description, {'label': 'Description'}) }}
+		{{ form_row(form.nom, {'label': 'Nom'}) }}
+		{{ form_row(form.reference, {'label': 'Référence'}) }}
+		{{ form_row(form.EAN, {'label': 'EAN'}) }}
+{# ajout de la ligne photo #}
+		{{ form_row(form.photo) }}
+
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

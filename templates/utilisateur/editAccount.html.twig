@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier{% endblock %}
+{% block body %}
+
+
+	<div class="container m-auto w-50">
+
+		<h1 class="mt-5">Saisissez votre nouvelle adresse email ainsi que votre nouveau mot de passe</h1>
+
+			{{form_start(form)}}
+			{{form_widget(form)}}
+			{{form_end(form)}}
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ produit.nom }}{% endblock %}
+
+	
+
+{% block body %}
+
+
+	<div class="container m-auto">
+
+		<h1 class="text-center mb-5 mt-5">Informations sur le produit</h1>
+
+		<div class="text-center m-auto infos_produit">
+
+			<h2>{{ produit.nom }}</h2>
+			<p>{{ categories.libelle }}</p>
+			<p>{{ produit.description }}</p>
+			<p>Référence : {{ produit.reference }}</p>
+			<p>EAN : {{ produit.EAN }}</p>
+{# ajout de l'affichage image #}
+			<p><img src="{{ asset('uploads/') ~ produit.photo }}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></p>
+		</div>
+
+
+	<div class="text-center mb-5 mt-5">
+		<a href="/produit" ><input class="btn btn-light" type="submit" name="retour" value="Revenir à la liste des produits"></a>
+		<a href="/produit/modifier/{{ produit.id }}" ><input class="btn btn-success" type="submit" name="modifier" value="Modifier le produit"></a>
+		<a href="/produit/supprimer/{{ produit.id }}"><input class="btn btn-danger text-dark" type="submit" name="supprimer" value="Supprimer le produit"></a>
+	</div>
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+      <h1 class="text-center mt-5 mb-5">Liste des utilisateurs</h1>
+        <div class="container table-responsive">
+          {% if utilisateurs %}
+              <table class="table table-hover">
+                <thead class="text-center">
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Civilité</th>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">Afficher</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-center">
+                  {% for utilisateur in utilisateurs %}
+                    <tr>
+                      <td>{{utilisateur.nom}} </td>
+                      <td>{{utilisateur.prenom}} </td>
+                       <td>{{utilisateur.civilite}} </td>
+                        <td>{{utilisateur.entreprise}} </td>
+                    
+                        <td>
+                          <a href="/utilisateur/{{utilisateur.Id}}" ><input class="btn btn-sm btn-light" type="submit" name="retour" value="Afficher infos"></a>
+                        </td>
+                        <td>                   
+                          <a href="/utilisateur/modify/{{utilisateur.Id}}"><input class="btn btn-sm btn-success" type="submit" name="retour" value="Modifier"></a>
+                        </td> 
+                        <td>
+                          <a href="/utilisateur/delete/{{utilisateur.Id}}" ><input class="btn btn-sm btn-danger text-dark" type="submit" name="retour" value="Supprimer"></a>
+                        </td>                               
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+      {% else %}
+        Pas d'utilisateurs à afficher.
+      {% endif %} 
+    </div> 
+
+    <div class="container mb-5 text-center">
+      <a href="/../produit"><input class="btn btn-light" type="submit" name="retour" value="Afficher les produits"></a>
+      <a href="/../categorie"><input class="btn btn-light" type="submit" name="retour" value="Afficher les catégories"></a>
+      <a href="/../prix"><input class="btn btn-light" type="submit" name="retour" value="Afficher les prix"></a>
+    </div>
+
+
+{% endblock %}

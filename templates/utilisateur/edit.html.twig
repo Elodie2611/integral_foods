@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier utilisateur{% endblock %}
+{% block body %}
+
+
+
+	<div class="container m-auto w-50">
+
+		<h1 class=" mt-5 mb-5 text-center">Modifier l'utilisateur</h1>
+
+		{{form_start(form)}}
+
+		{# {{form_widget(form)}} #}
+
+
+		{{ form_row(form.nom) }}
+		{{ form_row(form.prenom, {'label': 'Prénom'}) }}
+		{{ form_row(form.civilite, {'label': 'Civilité'}) }}
+		{{ form_row(form.entreprise) }}
+		{{ form_row(form.type_etablissement, {'label': 'Type établissement'}) }}
+		{{ form_row(form.etablissement_autre, {'label': 'Établissement autre'}) }}
+		{{ form_row(form.status_inscription, {'label': 'Statut inscription'}) }}
+		{{ form_row(form.tel, {'label': 'Téléphone'}) }}
+
+		{{ form_row(form.siret, {'label': 'Siret'}) }}
+		{{ form_row(form.num_tva, {'label': 'num_tva'}) }}
+
+		{{ form_row(form.description, {'label': 'Description'}) }}
+
+		{{form_end(form)}}
+
+	</div>
+
+	<div class="container mb-5 text-center">
+		<a href="/utilisateur" ><input class="btn btn-light" type="submit" name="retour" value="Revenir à la liste des utilisateurs"></a>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des prix{% endblock %}
+{% block body %}
+
+
+
+      <h1 class="text-center mt-5 mb-5">Liste des prix</h1>
+
+        <div class="container table-responsive">
+
+
+
+       
+            <table class="table table-hover">
+              <thead class="text-center">
+                <tr>
+                  <th scope="col">Nom du client</th>
+                  <th scope="col">Nom du produit</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Modifier</th>
+                  <th scope="col">Supprimer</th>
+
+                </tr>
+              </thead>
+
+
+
+              <tbody class="text-center">
+                    {% for lePrix in prix %}
+                   <tr>
+                     <td>
+                       {% for user in user %}
+                           {% if lePrix.idutilisateur == user.userId %}
+                             {{ user.nom }}
+                           {% endif %}
+                       {% endfor %}
+                     </td>
+                     <td>
+                      {% for prod in produit %}
+                           {% if lePrix.idproduit == prod.id %}
+                             {{ prod.nom }}
+                           {% endif %}
+                       {% endfor %}
+                     </td>
+                     <td>{{ lePrix.prix }}</td>
+                     <td><a href="/prix/update/{{ lePrix.id }}"><input class="btn btn-sm btn-success" type="submit" name="retour" value="Modifier"></a></td>
+                     <td><a href="/prix/delete/{{ lePrix.id }}" ><input class="btn btn-sm " type="submit" name="retour" value="Supprimer"></a></td>
+                   </tr>
+                  {% endfor %}
+              </tbody>
+            </table> 
+
+
+    </div> 
+
+    <div class="container mb-5 text-center">
+      <a href="/prix/nouveau"><input class="btn btn-light mr-5" type="submit" name="retour" value="Ajouter un nouveau prix"></a>
+    </div>
+
+
+    <div class="container mb-5 text-center">
+    	<a href="/../utilisateur"><input class="btn btn-light" type="submit" name="retour" value="Afficher les utilisateurs"></a>
+     	<a href="/../produit"><input class="btn btn-light" type="submit" name="retour" value="Afficher les produits"></a>
+     	<a href="/../categorie"><input class="btn btn-light" type="submit" name="retour" value="Afficher les catégories"></a>      
+    </div>
+
+
+{% endblock %}

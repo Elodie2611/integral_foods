@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une catégorie {% endblock %}
+
+	
+
+{% block body %}
+	<div class="container mt-5 mb-5 m-auto w-50">
+		<h1 class="text-center  mt-5 mb-5">Modifier une catégorie</h1>
+		{{ form_start(form) }}
+		{{ form_row(form.libelle, {'label': 'Libellé'}) }}
+		{{ form_end(form) }}
+	</div>
+
+	<div class="container mb-5 text-center">
+		<a href="/categorie"><input class="btn btn-light" type="submit" name="retour" value="Revenir à la liste des catégories"></a>
+	</div>
+{% endblock %}

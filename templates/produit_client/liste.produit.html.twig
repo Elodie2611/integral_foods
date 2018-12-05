@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{categories.libelle}}{% endblock %}
+	
+{% block body %}
+	<div class="container">
+		<div class="row pt-5 pb-5 justify-content-center" id="titre">
+			<h2>{{categories.libelle}}</h2>
+		</div>
+	
+		<div class="row" id="nosepices">
+			{% if produits %}
+			{% for prod in produits %}
+				<div class="col-xl-3 col-lg-3 col-md-3 pb-4">
+
+{# modification de l'affichage des images en dynamiques et du alt de la balise img #}	
+					<figure class="figure2">
+					  	<a href="/produit/client/fiche_produit/{{ prod.id }}"><img src="{{ asset('uploads/') ~ prod.photo }}" class="figure-img img-fluid rounded" alt="image : {{prod.nom}}."></a>
+					  	<a href="/produit/client/fiche_produit/{{ prod.id }}"><figcaption class="figure-caption2">{{prod.nom}}</figcaption></a>
+					</figure>
+				</div>
+			{% endfor %}
+			{% else %}
+        <div class="container text-center" style="font-family : Raleway, Arial;">Pas de produits à afficher !</div>
+      {% endif %}
+		</div>	
+	</div>
+
+	<div class="text-center mb-5 mt-5">
+		<a href="{{ path('produit_client')}}" ><input class="btn btn-success" type="submit" name="retour" value="Revenir à la liste des catégories"></a>
+	</div>
+{% endblock %}
