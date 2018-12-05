@@ -1,0 +1,211 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+
+/*BARRE DE NAVIGATION - HEADER*/
+
+
+nav {
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    height: 250px;
+
+}
+
+#liens_nav, label {
+    font-weight: bold;
+    font-family: 'Raleway' !important;
+
+}
+
+#logo {
+    margin-right: 20px;
+}
+
+
+li {
+    list-style-type: none;
+    justify-content: center;
+    margin-left: 30px;
+}
+
+.logout {
+    /*background-color: rgba(255,255,255,0.5);*/
+    height: 30px;
+    width: auto;
+    margin: 0;
+    background-color: #FAFAFA;
+    border-radius: 5px;
+    border:0;
+
+}
+
+/*FIN BARRE DE NAVIGATION - HEADER*/
+
+
+/*LIENS ET FONTAWESOME*/
+
+a, i, a:active, a:focus{
+    color: black !important;
+}
+
+a:hover, i:hover{
+
+    color: #FF9900 !important;
+}
+
+/*FIN LIENS ET FONTAWESOME*/
+
+
+/*MAIN*/
+
+.form-control {
+    width: 60% !important;
+    justify-content : center !important;
+    margin:auto;
+}
+
+.btn {
+    background-color: white;
+    border: 2px solid #FF9900 !important;
+    font-family: 'Raleway' !important;
+}
+
+.btn-success {
+    color: black;
+/*    margin-bottom: 10px;
+    margin-top: 10px;*/
+}
+
+
+h1, h2, h3, h4 {
+    font-family: 'Amatic SC', cursive !important;
+    font-weight: bold;
+}
+
+/*FIN MAIN*/
+
+/*UTILISATEURS*/
+
+
+
+/*FIN UTILISATEURS*/
+
+
+/*PRODUITS*/
+
+.table-hover tbody tr:hover {
+    background-color: rgba(234,96,33,.2);
+}
+
+.infos_produit {
+
+    border-radius: 5px;
+    width: 600px;
+    padding: 20px;
+}
+
+/*FIN PRODUITS*/
+
+/*PRIX*/
+
+#form_date_inscription {
+    border: 0 !important;
+}
+
+label[for]
+{
+    padding-right: 13.5%;
+}
+
+label[for="form_civilite"] {
+    padding-right: 15.5%;
+    margin-top: 25px;
+}
+
+
+label[for="form_type_etablissement"] {
+    padding-right: 6.5%;
+    margin-top: 25px;
+}
+
+#form_photo {
+    padding: 0;
+}
+
+select {
+    width: 20%;
+    padding-left: 5px;
+}
+
+/*FIN PRIX*/
+
+/*footer*/
+
+#main-footer{ 
+    background-color: #CC0033;
+    height: 60px;
+    font-family: 'Raleway' !important;
+    /*position: fixed; bottom: 0; left: 0; right: 0;*/
+    position: fixed; bottom: 0; left: 0; right: 0
+}
+
+#div_footer {
+    height: 60px;
+    align-items: center;
+}
+
+/*mentions légales en gras*/
+
+#mentions {
+    font-weight: bolder;
+}
+
+/*images produits*/
+figure
+{
+ position: relative;
+ width: 100%;
+
+}
+.figure-caption
+{
+ width: 100%;
+ height: 16%;
+ position: absolute;
+ bottom: 0px;
+ left: 0px;
+ text-align: center;
+ font-family: 'Raleway';
+ font-size: 1.3em;
+ background-color: #FF9900;
+ color: white;
+ border-radius: 0 0 5px 5px;
+}
+
+.figure-caption2
+{
+ width: 100%;
+ height: 16%;
+ position: absolute;
+ bottom: 0px;
+ left: 0px;
+ text-align: center;
+ font-family: 'Raleway';
+ font-size: 1em;
+ background-color: #FF9900;
+ color: white;
+ border-radius: 0 0 5px 5px;
+}
+/* fin images produits*/
