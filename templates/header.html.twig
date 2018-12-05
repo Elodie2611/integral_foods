@@ -13,14 +13,14 @@
         {% if is_granted('ROLE_troll') %}
                     <div class="row text-center mt-4">
                    <ul class="row" id="liens_nav">
-                            <li ><a href="/logout"><button class="logout">Déconnexion</button></a></li>
+                            <li > <button class="logout"> <a href="/logout">Déconnexion</a></button></li>
                       </ul>
                   </div>
                 {% else %}
                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <div class="row text-center mt-4">
                    <ul class="row" id="liens_nav">
-                            <li><a href="/logout"><button class="logout">Déconnexion</button></a></li>
+                            <li><button class="logout"><a href="/logout">Déconnexion</a></button></li>
                       </ul>
                   </div>
                 {% endif %}
@@ -30,7 +30,7 @@
                             <ul class="row">
                                 <li><a href="/panier" ><i class="fas fa-shopping-basket fa-lg text-light" ></i></a></li>
                            
-                                <li><a href="utilisateur/profil/{{ email }}" ><i class="far fa-user fa-lg text-light" ></i></a></li>
+                                <li><a href="../../../utilisateur/profil/{{ email }}" ><i class="far fa-user fa-lg text-light" ></i></a></li>
                                      
                                 <li><a href="mailto:labrigade@integralfoods.fr" ><i class="fas fa-envelope fa-lg text-light" ></i></a></li>
                             </ul>   

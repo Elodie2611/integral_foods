@@ -7,13 +7,14 @@
 	<div class="container m-auto">
 
 		<div class="text-center mt-5 mb-5">
-			<h1>Profil de {{ utilisateur.prenom}} {{ utilisateur.nom}}</h1>			
+			<h1>{{ utilisateur.nom}} {{ utilisateur.prenom}} </h1>			
 		</div>
 
 		<div class="container text-center mt-5 mb-5" style="font-family: Raleway, Arial;">
 			<h2>{{ utilisateur.civilite}} {{ utilisateur.prenom}} {{ utilisateur.nom}}</h2>
 			<p><strong> Nom de l'entreprise : </strong>{{ utilisateur.entreprise}}</p>
 			<p><strong>Type d'établissement :</strong>{{ utilisateur.typeetablissement}}</p>
+			{# <p> {{ utilisateur.etablissementautre}}</p> #}
 			<p><strong>Téléphone :</strong>{{ utilisateur.tel}}</p>
 			<p><strong>SIRET :</strong>{{ utilisateur.siret}}</p>
 			<p><strong>Description :</strong>{{ utilisateur.description}}</p>
@@ -22,8 +23,8 @@
 	</div>
 
 	<div class="container mb-5 text-center">
-		<a href="../modifyUser" class="btn btn-primary btn-success">Modifier mes informations d'entreprise</a>
-		<a href="../modifyAccount" class="btn btn-primary btn-success">Modifier mes informations de compte</a>
+		<a href="../modifyUser" class="btn btn-primary btn-success">Modifier mes information d'entreprise</a>
+		<a href="../modifyAccount" class="btn btn-primary btn-success">Modifier mes information de compte</a>
 	</div>
 
 {% endblock %}

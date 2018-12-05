@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Liste des prix{% endblock %}
+{% block title %}Liste prix{% endblock %}
 {% block body %}
 
 
@@ -45,8 +45,8 @@
                        {% endfor %}
                      </td>
                      <td>{{ lePrix.prix }}</td>
-                     <td><a href="/prix/update/{{ lePrix.id }}"><input class="btn btn-sm btn-success" type="submit" name="retour" value="Modifier"></a></td>
-                     <td><a href="/prix/delete/{{ lePrix.id }}" ><input class="btn btn-sm " type="submit" name="retour" value="Supprimer"></a></td>
+                     <td><a href="/prix/update/{{ lePrix.id }}" class="btn btn-sm btn-success">Modifier</a></td>
+                     <td><a href="/prix/delete/{{ lePrix.id }}" class="btn btn-sm btn-danger">Supprimer</a></td>
                    </tr>
                   {% endfor %}
               </tbody>
@@ -56,14 +56,14 @@
     </div> 
 
     <div class="container mb-5 text-center">
-      <a href="/prix/nouveau"><input class="btn btn-light mr-5" type="submit" name="retour" value="Ajouter un nouveau prix"></a>
+      <a href="/prix/nouveau" class="btn btn-light mr-5">Ajouter un nouveau prix</a>
     </div>
 
 
     <div class="container mb-5 text-center">
-    	<a href="/../utilisateur"><input class="btn btn-light" type="submit" name="retour" value="Afficher les utilisateurs"></a>
-     	<a href="/../produit"><input class="btn btn-light" type="submit" name="retour" value="Afficher les produits"></a>
-     	<a href="/../categorie"><input class="btn btn-light" type="submit" name="retour" value="Afficher les catégories"></a>      
+    	<a href="/../utilisateur" class="btn btn-light">Afficher les utilisateurs</a>
+     	<a href="/../produit" class="btn btn-light">Afficher les produits</a>
+     	<a href="/../categorie" class="btn btn-light">Afficher les catégories</a>      
     </div>
 
 

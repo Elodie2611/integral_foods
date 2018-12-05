@@ -31,9 +31,14 @@
 
 	</div>
 
+  {% if is_granted('ROLE_troll') %}
 	<div class="container mb-5 text-center">
 		<a href="/utilisateur" ><input class="btn btn-light" type="submit" name="retour" value="Revenir à la liste des utilisateurs"></a>
 	</div>
-
+{% else %}
+	<div class="container mb-5 text-center">
+		<a href="/" ><input class="btn btn-light" type="submit" name="retour" value="Revenir à l'accueil"></a>
+	</div>
+{% endif %}
 
 {% endblock %}

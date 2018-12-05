@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+
+{% block body %}
+
+
+	<h1 class="text-center mb-5 mt-5">Liste des commandes</h1>
+
+
+	<div class="container table-responsive">
+
+		{% if commandes %}
+		<table class="table table-hover text-center">
+		  <thead>
+		    <tr>
+		      <th scope="col">Client</th>
+		      <th scope="col">Produit</th>
+		      <th scope="col">Quantité</th>
+		      <th scope="col">Prix</th>
+					<th scope="col">validation</th>
+		      <th scope="col">Date de la commande</th>
+		      <th scope="col">Supprimer</th>
+		    </tr>
+		  </thead>
+		  <tbody class="text-center">
+		  	{% for commande in commandes %}
+			    <tr>
+				    <td>
+	                    {% for user in user %}
+	                        {% if commande.idutilisateur == user.userId %}
+	                            {{ user.nom }}
+	                        {% endif %}
+	                    {% endfor %}
+	                </td>
+
+				    <td>
+
+				    	{% for prod in produit %}
+	                        {% if commande.idproduit == prod.id %}
+	                            {{ prod.nom }}
+	                        {% endif %}
+	                    {% endfor %}
+	                </td>
+				    <td>{{ commande.quantite }} </td>
+				    <td>{{ commande.prix }} </td>
+						{% if commande.compte == 1 %}
+							<td> traitée </td>
+						{% else %}
+						<td> En cours </td>
+						{% endif %}
+				    <td>{{ commande.dateCommande|date("m/d/Y") }} </td>
+				     {#  <td>
+				      	<a class="btn btn-sm btn-success" href="/commandes/modifier/{{ commande.id }}">Modifier</a>
+				      </td> #}
+				    <td>
+				    	<a class="btn btn-sm btn-danger" href="/commandes/delete/{{ commande.id }}">Valider la commande</a>
+				    </td>
+			    </tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+		{% else %}
+			<p class="text-center" style="font-family : Raleway, Arial;">Pas de commandes à afficher.</p>
+		{% endif %}
+	</div>
+
+
+	<div class="container mb-5 text-center">
+		<a href="/../utilisateur" class="btn btn-light">Afficher les utilisateurs</a>
+		<a href="/../categorie" class="btn btn-light">Afficher les catégories</a>
+		<a href="/../prix" class="btn btn-light">Afficher les prix</a>
+		<a href="/../produit" class="btn btn-light">Afficher les produits</a>
+	</div>
+
+
+
+
+{% endblock %}
